@@ -75,15 +75,18 @@ void Game::processEvents(SDL_Event e)
 			m_gameIsRunning = false;
 		}
 
-		moveSpoons(e);
+		//moveSpoons(e);
 	}
 
 }
 
 void Game::update()
 {
-	m_rect.x += m_vel.x;
-	m_rect.y += m_vel.y;
+	//m_rect.x += m_vel.x;
+	//m_rect.y += m_vel.y;
+
+	// keystates version
+	moonSpoonsKeystate();
 }
 
 void Game::render()
@@ -163,6 +166,34 @@ void Game::moveSpoons(SDL_Event e)
 		{
 			m_vel.x = 0;
 		}
+	}
+}
+
+void Game::moonSpoonsKeystate()
+{
+	m_rect.x = m_vel.x;
+	m_rect.y = m_vel.y;
+
+	const Uint8* keystates = SDL_GetKeyboardState(nullptr);
+
+	if (keystates[SDL_SCANCODE_W])
+	{
+		m_vel.y -= MAX_VEL;
+	}
+
+	if (keystates[SDL_SCANCODE_S])
+	{
+		m_vel.y += MAX_VEL;
+	}
+
+	if (keystates[SDL_SCANCODE_A])
+	{
+		m_vel.x -= MAX_VEL;
+	}
+
+	if (keystates[SDL_SCANCODE_D])
+	{
+		m_vel.x += MAX_VEL;
 	}
 }
 

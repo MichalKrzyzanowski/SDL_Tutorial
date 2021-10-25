@@ -1,6 +1,7 @@
 #include <SDL.h>
 #include <iostream>
 #include <string>
+#include <cstdint>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 #include "Utility.h"
@@ -26,6 +27,7 @@ private:
 	void surfaceDraw();
 	void rendererDraw();
 
+	void moonSpoonsKeystate();
 	void moveSpoons(SDL_Event e);
 
 	void cleanUp();
